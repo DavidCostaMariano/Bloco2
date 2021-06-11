@@ -19,7 +19,7 @@ import com.sun.istack.NotNull;
 public class Postagem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	
 	@NotNull
@@ -39,10 +39,10 @@ public class Postagem {
 	private Tema tema;
 	
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getTitulo() {

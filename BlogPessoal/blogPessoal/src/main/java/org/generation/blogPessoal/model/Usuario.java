@@ -26,12 +26,15 @@ public class Usuario {
 	@Size(min = 5 , max = 100)
 	private String usuario;
 	
+	@NotNull
+	private int idade;
 
 	@NotNull
 	@Size(min = 2 , max = 100)
 	private String senha;
 
-
+	private boolean admin;
+	
 	public Long getId() {
 		return id;
 	}
@@ -70,6 +73,28 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+
+
+	public int getIdade() {
+		return idade;
+	}
+
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+
+	public void setAdmin(boolean admin) {
+		admin = admin;
+	}
+	
 	
 	
 

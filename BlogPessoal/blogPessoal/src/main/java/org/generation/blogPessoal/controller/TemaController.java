@@ -42,12 +42,8 @@ public class TemaController {
 		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(nome));
 	}
 	
-	@PostMapping("/{id}")
-	public ResponseEntity<Tema> post (@PathVariable Long id, @RequestBody Tema novotema){
-		if(repository.findById(id) != null) {
-			return ResponseEntity.badRequest().build();		
-		}
-		
+	@PostMapping
+	public ResponseEntity<Tema> post ( @RequestBody Tema novotema){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(novotema));
 	}
 	
