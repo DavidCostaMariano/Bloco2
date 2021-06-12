@@ -1,20 +1,15 @@
 package org.generation.blogPessoal.model;
 
 public class UsuarioLogin {
-
+	
 	private String nome;
 	
 	private String usuario;
 	
 	private String senha;
 	
-	private int idade;
-	
-	private boolean maiorIdade;
-	
 	private String token;
 
-	private boolean admin;
 	public String getNome() {
 		return nome;
 	}
@@ -46,32 +41,6 @@ public class UsuarioLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
-
-	public int getIdade() {
-		return idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-
-	public boolean isMaiorIdade() {
-		return maiorIdade;
-	}
-
-	public void setMaiorIdade(boolean maiorIdade) {
-		this.maiorIdade = maiorIdade;
-	}
-
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		admin = admin;
-	}
-	
 	
 	
 }

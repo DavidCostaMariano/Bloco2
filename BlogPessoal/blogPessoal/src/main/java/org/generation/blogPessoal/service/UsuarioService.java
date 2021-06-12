@@ -4,27 +4,31 @@ import java.nio.charset.Charset;
 import java.util.Optional;
 
 import org.apache.commons.codec.binary.Base64;
-import org.generation.blogPessoal.model.Usuario;
 import org.generation.blogPessoal.model.UsuarioLogin;
+import org.generation.blogPessoal.model.Usuario;
 import org.generation.blogPessoal.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository repository;
-	
-	public Usuario CadastrarUsuario (Usuario usuario){
+
+	public Optional<Usuario> CadastrarUsuario(Usuario usuario) {
+		
+		
+		if(repository.findByUsuario(usuario.getUsuario()).isPresent())
+			return null;
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 		String senhaEncoder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
-		return repository.save(usuario);
+
+		return Optional.of(repository.save(usuario));
 	}
 
 	public Optional<UsuarioLogin> Logar(Optional<UsuarioLogin> user) {
@@ -42,19 +46,12 @@ public class UsuarioService {
 				user.get().setToken(authHeader);				
 				user.get().setNome(usuario.get().getNome());
 				user.get().setSenha(usuario.get().getSenha());
-				user.get().setAdmin(usuario.get().isAdmin());
-				if(user.get().getIdade() >=18)
-				{
-					user.get().setMaiorIdade(true);
-				}
-				else {
-				user.get().setMaiorIdade(false);
-				}
 				
 				return user;
 
 			}
 		}
 		return null;
-			}
+	}
+
 }

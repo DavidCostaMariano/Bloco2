@@ -19,30 +19,23 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class SwaggerConfig {
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors
-				.basePackage("org.generation.blogPessoal.controller"))
-				.paths(PathSelectors.any())
-				.build()
-				.apiInfo(metadata())
-				.useDefaultResponseMessages(false)
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("org.generation.blogPessoal.controller"))
+				.paths(PathSelectors.any()).build().apiInfo(metadata()).useDefaultResponseMessages(false)
 				.globalResponses(HttpMethod.GET, responseMessageForGET());
 	}
+
 	public static ApiInfo metadata() {
-		return new ApiInfoBuilder()
-				.title("API - Blog Pessoal")
+		return new ApiInfoBuilder().title("API - Blog Pessoal")
 				.description("Projeto API Spring - Blog Pessoal")
-				.version("1.0.0")
-				.license("Apache License Version 2.0")
+				.version("1.0.0").license("Apache License Version 2.0")
 				.licenseUrl("http://localhost:8080/swagger-ui/")
-				.contact(contact())
-				.build();
+				.contact(contact()).build();
 	}
 
 	private static Contact contact() {
-		return new Contact("David da Costa", 
-				"https://github.com/DavidCostaBKE", 
+		return new Contact("David da Costa",
+				"https://github.com/DavidCostaBKE",
 				"daviddacostamariano@gmail.com");
 	}
 
